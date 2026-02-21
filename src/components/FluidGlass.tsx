@@ -179,7 +179,7 @@ function NavItems({ items }: { items: Array<{ label: string; link: string }> }) 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const { spacing, fontSize } = DEVICE[device];
+    const { spacing, fontSize } = DEVICE[device as keyof typeof DEVICE];
 
     useFrame(() => {
         if (!group.current) return;
@@ -205,19 +205,17 @@ function NavItems({ items }: { items: Array<{ label: string; link: string }> }) 
                     color="white"
                     anchorX="center"
                     anchorY="middle"
-                    depthWrite={false}
                     outlineWidth={0}
                     outlineBlur="20%"
                     outlineColor="#000"
                     outlineOpacity={0.5}
-                    depthTest={false}
                     renderOrder={10}
                     onClick={(e) => {
                         e.stopPropagation();
                         handleNavigate(link);
                     }}
-                    onPointerOver={() => (document.body.style.cursor = 'pointer')}
-                    onPointerOut={() => (document.body.style.cursor = 'auto')}
+                    onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
+                    onPointerOut={() => { document.body.style.cursor = 'auto'; }}
                 >
                     {label}
                 </Text>
@@ -242,10 +240,10 @@ function Images() {
 
     return (
         <group ref={group}>
-            <Image position={[-2, 0, 0]} scale={[3, height / 1.1, 1]} url="https://picsum.photos/seed/hero1/900/900?grayscale" />
+            <Image position={[-2, 0, 0]} scale={[3, height / 1.1]} url="https://picsum.photos/seed/hero1/900/900?grayscale" />
             <Image position={[2, 0, 3]} scale={3} url="https://picsum.photos/seed/hero2/900/900?grayscale" />
-            <Image position={[-2.05, -height, 6]} scale={[1, 3, 1]} url="https://picsum.photos/seed/hero3/900/900?grayscale" />
-            <Image position={[-0.6, -height, 9]} scale={[1, 2, 1]} url="https://picsum.photos/seed/hero4/900/900?grayscale" />
+            <Image position={[-2.05, -height, 6]} scale={[1, 3]} url="https://picsum.photos/seed/hero3/900/900?grayscale" />
+            <Image position={[-0.6, -height, 9]} scale={[1, 2]} url="https://picsum.photos/seed/hero4/900/900?grayscale" />
             <Image position={[0.75, -height, 10.5]} scale={1.5} url="https://picsum.photos/seed/hero5/900/900?grayscale" />
         </group>
     );
@@ -270,7 +268,7 @@ function Typography() {
         return () => window.removeEventListener('resize', onResize);
     }, []);
 
-    const { fontSize } = DEVICE[device];
+    const { fontSize } = DEVICE[device as keyof typeof DEVICE];
 
     return (
         <Text
