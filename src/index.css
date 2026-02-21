@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #1a1a17;
+  color: #c8c2b4;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3530;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a09888;
+}
+
+/* ── Selection ── */
+::selection {
+  background: #a09888;
+  color: #1a1a17;
+}
+
+/* ── Typography Utilities ── */
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+/* ── Section Base ── */
+.section-padding {
+  padding: 8rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 10rem 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-padding {
+    padding: 12rem 6rem;
+  }
+}
+
+/* ── Animated underline ── */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c8c2b4;
+  transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
