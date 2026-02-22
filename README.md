@@ -1,8 +1,8 @@
-# Cinematic Developer Portfolio 🚀
+# Cinematic Developer Portfolio
 
 A highly interactive, motion-driven, and physics-based developer portfolio. This project was engineered from scratch without templates, pushing the boundaries of creative web development by blending raw WebGL with buttery-smooth scroll animations.
 
-![Portfolio Preview](https://via.placeholder.com/1200x630.png?text=Cinematic+Developer+Portfolio)
+![Portfolio Preview](https://chitranshu234.vercel.app/)
 
 ## ✨ Key Features
 
@@ -70,8 +70,7 @@ src/
 ## 🤝 Contact & Links
 
 *   **Chitranshu Pandey** - Software Engineer
-*   [LinkedIn](https://www.linkedin.com/in/)
-*   [GitHub](https://github.com/)
+*   [LinkedIn](https://www.linkedin.com/in/chitranshupandey/)
 
 ---
 *If you find this project interesting, feel free to give it a ⭐!*
