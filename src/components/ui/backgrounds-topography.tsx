@@ -232,7 +232,7 @@ function relax(
   }
 }
 
-function at(pts: Float64Array, start: number, n: number, i: number) {
+function at(_pts: Float64Array, start: number, n: number, i: number) {
   return start + ((i + n) % n) * 2;
 }
 

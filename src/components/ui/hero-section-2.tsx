@@ -200,9 +200,9 @@ const HeroSection = React.forwardRef<HTMLElement, HeroSectionProps>(
         </motion.div>
 
         {/* Right Side: On Mobile -> Profile Card with Info / On Desktop -> Full Height Diagonal Image */}
-        <div className="w-full px-4 pb-12 md:p-0 md:w-1/2 md:self-stretch lg:w-2/5 flex flex-col justify-center">
+        <div className="w-full px-4 pb-12 md:p-0 md:w-1/2 md:self-stretch lg:w-2/5 flex flex-col items-center justify-center">
           <motion.div 
-            className="w-full max-w-sm sm:max-w-md md:max-w-none md:h-full rounded-3xl md:rounded-none overflow-hidden border border-[rgba(200,194,180,0.15)] md:border-0 bg-[#221f1a] md:bg-transparent shadow-2xl shadow-black/60 md:shadow-none flex flex-col"
+            className="w-full max-w-sm sm:max-w-md mx-auto md:max-w-none md:mx-0 md:h-full rounded-3xl md:rounded-none overflow-hidden border border-[rgba(200,194,180,0.15)] md:border-0 bg-[#221f1a] md:bg-transparent shadow-2xl shadow-black/60 md:shadow-none flex flex-col"
             variants={isMobile ? {
               hidden: { opacity: 0, y: 25 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
