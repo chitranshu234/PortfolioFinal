@@ -2,72 +2,89 @@ import { motion } from 'framer-motion';
 import InfiniteMenu from '../components/InfiniteMenu';
 import type { MenuItem } from '../components/InfiniteMenu';
 
-// Helper to generate a text-based SVG data URI for skills without a logo
-function textIcon(label: string): string {
-    const lines = label.split('\n');
-    const fontSize = lines.length > 1 ? 28 : 36;
-    const textElements = lines
-        .map(
-            (line, i) =>
-                `<text x="64" y="${64 - ((lines.length - 1) * fontSize * 0.6) / 2 + i * fontSize * 0.7}" font-family="sans-serif" font-size="${fontSize}" font-weight="600" fill="%23c8c2b4" text-anchor="middle" dominant-baseline="central">${line}</text>`
-        )
-        .join('');
-    return `data:image/svg+xml,${encodeURIComponent(
-        `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><rect width="128" height="128" rx="16" fill="%231a1a17"/>${textElements}</svg>`
-    )}`;
-}
-
 const skillItems: MenuItem[] = [
-    // ── Programming Languages ──
+    // ── Languages ──
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
         link: '#',
         title: 'Java',
-        description: 'Programming Language',
+        description: 'Language',
+    },
+    {
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+        link: '#',
+        title: 'Python',
+        description: 'Language',
     },
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
         link: '#',
-        title: 'JavaScript (ES6+)',
-        description: 'Programming Language',
+        title: 'JavaScript',
+        description: 'Language',
     },
     {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-        link: '#',
-        title: 'TypeScript',
-        description: 'Programming Language',
-    },
-    {
-        image: textIcon('SQL'),
+        image: '/icons/sql.svg',
         link: '#',
         title: 'SQL',
-        description: 'Programming Language',
+        description: 'Language',
     },
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
         link: '#',
         title: 'HTML5',
-        description: 'Programming Language',
+        description: 'Language',
     },
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
         link: '#',
         title: 'CSS3',
-        description: 'Programming Language',
+        description: 'Language',
     },
 
-    // ── Frameworks & Libraries ──
+    // ── Backend ──
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
         link: '#',
         title: 'Spring Boot',
-        description: 'Framework',
+        description: 'Backend Framework',
     },
+    {
+        image: '/icons/spring.svg',
+        link: '#',
+        title: 'Spring Data JPA',
+        description: 'Backend',
+    },
+    {
+        image: '/icons/spring-security.svg',
+        link: '#',
+        title: 'Spring Security',
+        description: 'Backend',
+    },
+    {
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hibernate/hibernate-original.svg',
+        link: '#',
+        title: 'Hibernate',
+        description: 'ORM',
+    },
+    {
+        image: '/icons/rest-api.svg',
+        link: '#',
+        title: 'REST APIs',
+        description: 'Backend',
+    },
+    {
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',
+        link: '#',
+        title: 'FastAPI',
+        description: 'Backend Framework',
+    },
+
+    // ── Frontend ──
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
         link: '#',
         title: 'React.js',
-        description: 'Framework',
+        description: 'Frontend Framework',
     },
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
@@ -76,22 +93,10 @@ const skillItems: MenuItem[] = [
         description: 'Mobile Framework',
     },
     {
-        image: textIcon('Expo'),
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
         link: '#',
-        title: 'Expo',
-        description: 'Mobile Framework',
-    },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-        link: '#',
-        title: 'Node.js',
-        description: 'Runtime',
-    },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
-        link: '#',
-        title: 'Express.js',
-        description: 'Framework',
+        title: 'TypeScript',
+        description: 'Language',
     },
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
@@ -99,58 +104,46 @@ const skillItems: MenuItem[] = [
         title: 'Tailwind CSS',
         description: 'CSS Framework',
     },
+
+    // ── AI & LLM ──
     {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
+        image: '/icons/langchain.svg',
         link: '#',
-        title: 'Bootstrap',
-        description: 'CSS Framework',
+        title: 'LangChain',
+        description: 'AI & LLM',
+    },
+    {
+        image: '/icons/langgraph.svg',
+        link: '#',
+        title: 'LangGraph',
+        description: 'AI & LLM',
+    },
+    {
+        image: '/icons/rag.svg',
+        link: '#',
+        title: 'RAG',
+        description: 'AI & LLM',
+    },
+    {
+        image: '/icons/chromadb.svg',
+        link: '#',
+        title: 'ChromaDB',
+        description: 'Vector Database',
+    },
+    {
+        image: '/icons/embeddings.svg',
+        link: '#',
+        title: 'Embeddings',
+        description: 'AI & LLM',
     },
 
-    // ── Developer Tools ──
+    // ── Databases ──
     {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
         link: '#',
-        title: 'Git',
-        description: 'Developer Tool',
+        title: 'PostgreSQL',
+        description: 'Database',
     },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-        link: '#',
-        title: 'GitHub',
-        description: 'Developer Tool',
-    },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-        link: '#',
-        title: 'VS Code',
-        description: 'Developer Tool',
-    },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg',
-        link: '#',
-        title: 'IntelliJ IDEA',
-        description: 'Developer Tool',
-    },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
-        link: '#',
-        title: 'Postman',
-        description: 'Developer Tool',
-    },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg',
-        link: '#',
-        title: 'Android Studio',
-        description: 'Developer Tool',
-    },
-    {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-        link: '#',
-        title: 'Figma',
-        description: 'Design Tool',
-    },
-
-    // ── Databases & Cloud ──
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
         link: '#',
@@ -163,11 +156,25 @@ const skillItems: MenuItem[] = [
         title: 'MongoDB',
         description: 'Database',
     },
+
+    // ── Tools ──
     {
-        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
         link: '#',
-        title: 'PostgreSQL',
-        description: 'Database',
+        title: 'Git',
+        description: 'Tool',
+    },
+    {
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+        link: '#',
+        title: 'GitHub',
+        description: 'Tool',
+    },
+    {
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
+        link: '#',
+        title: 'Postman',
+        description: 'Tool',
     },
     {
         image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg',
@@ -176,59 +183,35 @@ const skillItems: MenuItem[] = [
         description: 'Cloud Platform',
     },
     {
-        image: textIcon('REST\nAPIs'),
+        image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg',
         link: '#',
-        title: 'RESTful APIs',
-        description: 'Cloud & APIs',
-    },
-    {
-        image: textIcon('JSON'),
-        link: '#',
-        title: 'JSON',
-        description: 'Data Format',
+        title: 'Android Studio',
+        description: 'Tool',
     },
 
     // ── Core Concepts ──
     {
-        image: textIcon('Micro\nservices'),
-        link: '#',
-        title: 'Microservices',
-        description: 'Core Concept',
-    },
-    {
-        image: textIcon('OOP'),
+        image: '/icons/oop.svg',
         link: '#',
         title: 'Object-Oriented Programming',
         description: 'Core Concept',
     },
     {
-        image: textIcon('DSA'),
+        image: '/icons/dsa.svg',
         link: '#',
         title: 'Data Structures & Algorithms',
         description: 'Core Concept',
     },
     {
-        image: textIcon('MVC'),
+        image: '/icons/mvc.svg',
         link: '#',
         title: 'MVC Architecture',
         description: 'Core Concept',
     },
     {
-        image: textIcon('State\nMgmt'),
+        image: '/icons/database-design.svg',
         link: '#',
-        title: 'State Management',
-        description: 'Core Concept',
-    },
-    {
-        image: textIcon('API\nInteg.'),
-        link: '#',
-        title: 'API Integration',
-        description: 'Core Concept',
-    },
-    {
-        image: textIcon('Security'),
-        link: '#',
-        title: 'Security Implementation',
+        title: 'Database Design',
         description: 'Core Concept',
     },
 ];
@@ -237,7 +220,7 @@ export default function Skills() {
     return (
         <section
             id="skills"
-            className="min-h-screen section-padding relative overflow-hidden flex flex-col"
+            className="min-h-screen py-16 px-4 md:section-padding relative overflow-hidden flex flex-col"
             style={{ backgroundColor: '#1a1a17' }}
         >
             <motion.h2
@@ -253,7 +236,7 @@ export default function Skills() {
                 Technologies & Tools
             </p>
 
-            <div className="flex-1 min-h-[500px] md:min-h-[600px]">
+            <div className="w-full h-[520px] md:h-[620px] relative">
                 <InfiniteMenu items={skillItems} scale={1} />
             </div>
         </section>

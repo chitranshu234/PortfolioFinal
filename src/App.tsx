@@ -19,7 +19,7 @@ const menuItems = [
   { label: 'Work', ariaLabel: 'View work', link: '#work' },
   { label: 'Education', ariaLabel: 'View education', link: '#education' },
   { label: 'Contact', ariaLabel: 'Get in touch', link: '#contact' },
-  { label: 'Resume', ariaLabel: 'View resume', link: 'https://drive.google.com/file/d/1HTQisS7dRVy8_q32POFI_gN94gUC_cR3/view?usp=sharing' },
+  { label: 'Resume', ariaLabel: 'View resume', link: 'https://drive.google.com/file/d/13X1yZoe-KHRkmdQLloz_V5cNdwio68M-/view?usp=sharing' },
 ];
 
 const socialItems = [

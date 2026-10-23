@@ -60,8 +60,8 @@
     transition: 0.1s ease;
 }
 
-/* Hide title/description on smaller screens */
-@media (max-width: 1500px) {
+/* Hide title/description on mobile screens */
+@media (max-width: 768px) {
 
     .face-title,
     .face-description {

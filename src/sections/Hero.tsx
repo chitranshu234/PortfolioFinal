@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import Aurora from '../components/Aurora';
+import { TopographyBackground } from '../components/ui/backgrounds-topography';
 
 export default function Hero() {
     return (
@@ -8,15 +8,17 @@ export default function Hero() {
             className="relative min-h-screen flex items-center justify-center overflow-hidden"
             style={{ backgroundColor: '#1a1a17' }}
         >
-            {/* Aurora Background */}
-            <div className="absolute inset-0 z-0 opacity-80">
-                <Aurora
-                    colorStops={['#0d0d0b', '#c8c2b4', '#0d0d0b']}
-                    blend={0.3}
-                    amplitude={1.2}
-                    speed={0.8}
-                />
-            </div>
+            {/* Topography Background */}
+            <TopographyBackground
+                className="absolute inset-0"
+                lineColor="#a09888"
+                levels={14}
+                speed={0.6}
+                scale={1.1}
+                peak={1.2}
+                interactive
+                style={{ backgroundColor: '#1a1a17' }}
+            />
 
             {/* Content */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
@@ -48,10 +50,10 @@ export default function Hero() {
                             transition={{ duration: 1, delay: 1.2 }}
                             className="mt-12 flex flex-col gap-1 text-[#a09888] text-xs tracking-[0.2em] uppercase font-light"
                         >
-                            <span>WEB APPS</span>
-                            <span>MOBILE</span>
-                            <span>FULL STACK</span>
-                            <span>DSA</span>
+                            <span>FULL STACK DEVELOPER</span>
+                            <span>GENERATIVE AI ENGINEER</span>
+                            <span>JAVA · SPRING BOOT · REACT</span>
+                            <span>PYTHON · RAG · LANGCHAIN</span>
                         </motion.div>
                     </div>
 
@@ -86,7 +88,7 @@ export default function Hero() {
                                 CONTACT
                             </a>
                             <a
-                                href="https://drive.google.com/file/d/1HTQisS7dRVy8_q32POFI_gN94gUC_cR3/view?usp=sharing"
+                                href="https://drive.google.com/file/d/13X1yZoe-KHRkmdQLloz_V5cNdwio68M-/view?usp=sharing"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-8 py-3 border border-[#3a3530] text-[#c8c2b4] font-display text-lg tracking-wider hover:border-[#c8c2b4] transition-all duration-500"

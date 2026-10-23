@@ -1,174 +1,69 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import FlowingMenu from '../components/FlowingMenu';
+import PigmentExperienceLedger from '../components/ui/pigment-experience-ledger';
+import type { LedgerItem } from '../components/ui/pigment-experience-ledger';
 
-interface ExperienceDetail {
-    role: string;
-    company: string;
-    period: string;
-    location: string;
-    bullets: string[];
-}
-
-const experienceDetails: ExperienceDetail[] = [
+const experienceItems: LedgerItem[] = [
     {
-        role: 'Full Stack Developer',
         company: 'Klassway',
-        period: 'January 2026 – Present',
+        role: 'Full Stack Developer',
+        years: 'Jan 2026 – Mar 2026',
         location: 'Remote',
-        bullets: [
-            'Design, build, and maintain front-end and back-end components of web and mobile applications using React.js, Node.js, and modern JavaScript frameworks.',
-            'Develop and implement new features while debugging and optimizing existing code to enhance application performance.',
-            'Ensure seamless integration with databases (MySQL, MongoDB) and RESTful APIs for efficient data flow.',
-            'Implement security and data protection measures; troubleshoot applications for optimal performance.',
+        industry: 'EdTech & Web Development',
+        summary: [
+            "Developed two production-ready React.js websites for the company's web presence, serving 100+ users and improving load times by 25%.",
+            'Created adaptive layouts and tuned frontend performance across both websites, enhancing usability and ensuring a consistent experience on desktop and mobile devices.',
         ],
+        tags: ['React.js', 'JavaScript', 'Frontend Performance', 'Tailwind CSS', 'Responsive UI'],
+        logo: <img src="/klassway.png" alt="Klassway" className="h-4 w-auto rounded-sm object-contain" />,
     },
     {
-        role: 'React Native Developer Intern',
         company: 'Opebo',
-        period: 'November 2025 – February 2026',
+        role: 'React Native Developer Intern',
+        years: 'Nov 2025 – Feb 2026',
         location: 'Remote',
-        bullets: [
-            'Translate high-fidelity Figma prototypes into pixel-perfect, responsive mobile interfaces using React Native.',
-            'Optimize component rendering lifecycles to improve application fluidity across Android and iOS devices.',
-            'Partner with backend teams to integrate functional modules and ensure seamless data flow via RESTful APIs.',
+        industry: 'Mobile App Development',
+        summary: [
+            'Translated Figma designs into responsive Android and iOS interfaces using React Native and Expo, achieving 98% design accuracy.',
+            'Optimized mobile UI rendering through lazy loading, reducing render times by 35%, and integrated REST APIs for dynamic data fetching and backend communication.',
         ],
+        tags: ['React Native', 'Expo', 'Mobile UI', 'REST APIs', 'TypeScript', 'Cross-Platform'],
+        logo: <img src="/opebo.png" alt="Opebo" className="h-4 w-auto rounded-sm object-contain" />,
     },
     {
-        role: 'Full Stack Developer (Team Lead)',
-        company: 'Smart India Hackathon 2025 – Leaflink',
-        period: 'September 2025 – October 2025',
-        location: 'Pantnagar, India',
-        bullets: [
-            'Achieved 6th rank out of 500+ teams nationally for developing a robust supply chain traceability solution.',
-            'Architected backend system using Node.js and Express.js for dynamic QR code generation.',
-            'Improved data retrieval accuracy by 40% through optimized GPS integration and database queries.',
-            'Deployed full-stack application on Vercel, ensuring 99.9% uptime during evaluation phase.',
+        company: 'SIH 2025',
+        role: 'Technical Head',
+        years: 'Sep 2025 – Oct 2025',
+        location: 'Pantnagar',
+        industry: 'GovTech & Supply Chain (Rank 6)',
+        summary: [
+            'Led development of LeafLink, a medicinal herb traceability prototype with GPS origin tracking, QR code generation, and batch verification.',
+            'Designed a responsive web interface with multi-step data entry and batch identification for transparent herb collection and traceability.',
         ],
-    },
-];
-
-const experienceItems = [
-    {
-        link: 'javascript:void(0)',
-        text: 'Full Stack Developer — Klassway',
-        image: '/klassway.png',
-    },
-    {
-        link: 'javascript:void(0)',
-        text: 'React Native Intern — Opebo',
-        image: '/opebo.png',
-    },
-    {
-        link: 'javascript:void(0)',
-        text: 'Smart India Hackathon',
-        image: '/sih.png',
+        tags: ['System Architecture', 'GPS Tracking', 'QR Verification', 'Python', 'Supply Chain', 'Leadership'],
+        logo: <img src="/sih.png" alt="SIH 2025" className="h-4 w-auto rounded-sm object-contain" />,
     },
 ];
 
 export default function Experience() {
-    const [selected, setSelected] = useState<number | null>(null);
-
     return (
-        <section
+        <PigmentExperienceLedger
             id="experience"
-            className="min-h-screen section-padding relative overflow-hidden"
-            style={{ backgroundColor: '#1a1a17' }}
-        >
-            <motion.h2
-                initial={{ opacity: 0, y: 60, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 1, ease: 'easeOut' }}
-                viewport={{ once: true }}
-                className="font-display text-[clamp(3rem,10vw,8rem)] text-[#c8c2b4] text-center leading-[0.9] mb-4"
-            >
-                EXPERIENCE
-            </motion.h2>
-            <p className="text-center text-[#a09888]/50 text-xs tracking-[0.3em] uppercase mb-16">
-                Click to view details
-            </p>
-
-            <div
-                style={{ height: '500px', position: 'relative' }}
-                onClick={(e) => {
-                    const target = e.target as HTMLElement;
-                    const link = target.closest('.menu__item-link');
-                    if (link) {
-                        const items = Array.from(document.querySelectorAll('.menu__item-link'));
-                        const idx = items.indexOf(link);
-                        if (idx >= 0) {
-                            setSelected(selected === idx ? null : idx);
-                        }
-                    }
-                }}
-            >
-                <FlowingMenu
-                    items={experienceItems}
-                    speed={15}
-                    textColor="#c8c2b4"
-                    bgColor="#1a1a17"
-                    marqueeBgColor="#c8c2b4"
-                    marqueeTextColor="#1a1a17"
-                    borderColor="rgba(200, 194, 180, 0.15)"
-                />
-            </div>
-
-            {/* Job Description Panel */}
-            <AnimatePresence mode="wait">
-                {selected !== null && (
-                    <motion.div
-                        key={selected}
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="max-w-4xl mx-auto mt-12"
-                    >
-                        <div
-                            className="rounded-xl p-6 md:p-8 relative"
-                            style={{
-                                background: 'rgba(200, 194, 180, 0.03)',
-                                border: '1px solid rgba(200, 194, 180, 0.1)',
-                                borderLeft: '3px solid #c8c2b4',
-                            }}
-                        >
-                            {/* Close button */}
-                            <button
-                                onClick={() => setSelected(null)}
-                                className="absolute top-4 right-4 text-[#a09888] hover:text-[#c8c2b4] transition-colors text-xl"
-                            >
-                                ✕
-                            </button>
-
-                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
-                                <h3 className="font-display text-2xl md:text-3xl tracking-wider text-[#c8c2b4]">
-                                    {experienceDetails[selected].role}
-                                </h3>
-                                <span className="text-[#a09888]/60 text-sm">
-                                    {experienceDetails[selected].period}
-                                </span>
-                            </div>
-                            <p className="text-[#a09888]/80 text-sm mb-6">
-                                {experienceDetails[selected].company} · {experienceDetails[selected].location}
-                            </p>
-                            <ul className="space-y-3">
-                                {experienceDetails[selected].bullets.map((bullet, j) => (
-                                    <motion.li
-                                        key={j}
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: j * 0.1, duration: 0.4 }}
-                                        className="text-[#a09888]/70 text-sm font-light leading-relaxed flex gap-3"
-                                    >
-                                        <span className="text-[#c8c2b4] mt-0.5 flex-shrink-0">▸</span>
-                                        {bullet}
-                                    </motion.li>
-                                ))}
-                            </ul>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </section>
+            items={experienceItems}
+            heading="EXPERIENCE"
+            intro="Professional roles, engineering internships, and leadership achievements building modern software and AI platforms."
+            footnote="National Finalist at Smart India Hackathon 2025, securing Rank 6 among 500+ competing engineering teams nationwide"
+            cta={{
+                label: 'View Full Resume',
+                href: 'https://drive.google.com/file/d/13X1yZoe-KHRkmdQLloz_V5cNdwio68M-/view?usp=sharing',
+            }}
+            colors={['#a8825c', '#c4ad93', '#2c2721']}
+            strength={0.85}
+            residue={0.2}
+            defaultOpen={0}
+            background="#1a1a17"
+            ink="#c8c2b4"
+            fontFamily="'Bebas Neue', 'Inter', sans-serif"
+            uppercase
+            minHeight="auto"
+        />
     );
 }

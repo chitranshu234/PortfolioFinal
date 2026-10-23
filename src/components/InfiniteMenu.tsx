@@ -651,8 +651,14 @@ class InfiniteGridMenu {
                 (item) =>
                     new Promise<HTMLImageElement>((resolve) => {
                         const img = new Image();
-                        img.crossOrigin = 'anonymous';
+                        if (item.image.startsWith('http://') || item.image.startsWith('https://')) {
+                            img.crossOrigin = 'anonymous';
+                        }
                         img.onload = () => resolve(img);
+                        img.onerror = () => {
+                            console.warn('Failed to load menu item image:', item.image);
+                            resolve(img);
+                        };
                         img.src = item.image;
                     })
             )
@@ -660,7 +666,13 @@ class InfiniteGridMenu {
             images.forEach((img, i) => {
                 const x = (i % this.atlasSize) * cellSize;
                 const y = Math.floor(i / this.atlasSize) * cellSize;
-                ctx.drawImage(img, x, y, cellSize, cellSize);
+                try {
+                    if (img.width > 0 && img.height > 0) {
+                        ctx.drawImage(img, x, y, cellSize, cellSize);
+                    }
+                } catch (err) {
+                    console.warn('Could not draw icon to atlas:', err);
+                }
             });
 
             gl.bindTexture(gl.TEXTURE_2D, this.tex);

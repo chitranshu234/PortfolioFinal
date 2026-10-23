@@ -12,7 +12,7 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -89,3 +89,15 @@ body {
 .hover-underline:hover::after {
   width: 100%;
 }
+
+/* ── Hero diagonal image: disabled on mobile to prevent cutting photo & show full portrait ── */
+@media (max-width: 767px) {
+  .hero-diagonal-image {
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    aspect-ratio: 672 / 902 !important;
+    min-height: unset !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+}
