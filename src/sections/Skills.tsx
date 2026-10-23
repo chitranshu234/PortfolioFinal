@@ -232,9 +232,30 @@ export default function Skills() {
             >
                 SKILLS
             </motion.h2>
-            <p className="text-center text-[#a09888]/50 text-xs tracking-[0.3em] uppercase mb-8">
+            <p className="text-center text-[#a09888]/50 text-xs tracking-[0.3em] uppercase mb-4">
                 Technologies & Tools
             </p>
+
+            {/* Interactive hint badge */}
+            <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="flex justify-center mb-6"
+            >
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(200,194,180,0.05)] border border-[rgba(200,194,180,0.12)] text-[11px] tracking-wider uppercase text-[#a09888] select-none shadow-sm">
+                    <svg className="w-3.5 h-3.5 text-[#c8c2b4] animate-spin" style={{ animationDuration: '10s' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M3.6 9h16.8" />
+                        <path d="M3.6 15h16.8" />
+                        <path d="M12 3a14.5 14.5 0 0 0 0 18" />
+                        <path d="M12 3a14.5 14.5 0 0 1 0 18" />
+                    </svg>
+                    <span className="hidden sm:inline">Click & drag to rotate sphere</span>
+                    <span className="sm:hidden">Swipe to rotate sphere</span>
+                </div>
+            </motion.div>
 
             <div className="w-full h-[520px] md:h-[620px] relative">
                 <InfiniteMenu items={skillItems} scale={1} />
